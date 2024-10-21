@@ -32,7 +32,7 @@ Vous pouvez poser des simples questions à vos camarades de classe, mais vous ne
 Le total des points pour les questions s’élève à 90 points. Les 10 points restants sont attribués au style de code, à la fréquence et aux messages de commit, à l’organisation générale, à l’orthographe, à la grammaire, etc. Il y a également une question bonus qui vaut 5 points.
 
 ## Logistique
-Répondez aux questions dans le document appelé exam-01.Rmd. Ajoutez votre code et votre narration dans les espaces sous chaque question. Ajoutez des blocs de code au besoin. Utilisez autant de lignes que nécessaire, mais gardez votre narration concise. Avant de terminer, assurez-vous de supprimer le code et de relire vos réponses une fois de plus. Assurez vous de ce qui est présent sur votre repository github avant la date limite.
+Répondez aux questions dans le document appelé exam-01.Rmd. Ajoutez votre code et votre narration dans les espaces sous chaque question. Ajoutez des blocs de code au besoin. Utilisez autant de lignes que nécessaire, mais gardez votre narration concise. Avant de terminer, assurez-vous de supprimer le code non nécessaire et de relire vos réponses une fois de plus. Assurez vous de ce qui est présent sur votre repository github avant la date limite.
 
 ## Packages
 En plus de `tidyverse`, vous aurez besoin du package `nycflights13` pour les données. Vous devrez d’abord installer ces packages avant de les charger.
@@ -53,19 +53,20 @@ Le package `nycflights13` contient des informations sur tous les vols qui ont qu
 2.  **Question 2 (5 points)** - Quelles compagnies aériennes ont le plus de vols au départ des aéroports de NYC en 2013?
     Faites un tableau qui les liste par ordre décroissant de fréquence et montre le nombre de vols pour chaque compagnie aérienne.
     Dans votre narration, mentionnez également les noms des compagnies aériennes.
-    *Indice:* Vous pouvez utiliser l’ensemble de données `airlines` pour rechercher le nom de la compagnie aérienne en fonction du code `carrier`.
+    *Indice:* Vous pouvez utiliser le dataframe `airlines` pour rechercher le nom de la compagnie aérienne en fonction du code `carrier`.
     
 3.  **Question 3 (10 points)** - Considérez uniquement les vols qui ont des informations de retard d’arrivée non manquantes.
-    Votre réponse doit inclure le nom du transporteur en plus du code du transporteur et des valeurs demandées.
+    Votre réponse doit inclure le code de la compagnie arérienne et les valeurs demandées. Utilisez le dataframe `airlines` pour retrouver le nom des compagnies associées à chaque code.
 
     a\.
-    Quel transporteur a eu le retard moyen d'arrivée le plus élevé?
+    Quelle compagnie aérienne a eu le retard moyen d'arrivée le plus élevé?
     
     b\.
-    Quel transporteur a eu le retard moyen d’arrivée le plus bas ?
+    Quelle compagnie aérienne a eu le retard moyen d’arrivée le plus bas ?
     
 4.  **Question 4 (10 points)** - Quelle était la température moyenne à l’aéroport d’origine le jour du retard de départ le plus élevé ? 
-Votre réponse doit inclure le nom de l’aéroport d’origine, la date du retard de départ le plus élevé et la température moyenne ce jour-là.
+Votre réponse doit inclure le nom de l’aéroport d’origine, la date du retard de départ le plus élevé et la température moyenne **en degrés celsuis** ce jour-là.
+*Indice:* Il faudra peut-être le faire en deux fois: commencez par trouver l'aéroport de départ et le jour où le retard au départ est le plus élevé, puis calculez la température moyenne pour ce lieu et ce jour là.
 
 5.  **Question 5 (15 points)** - Considérez la journée divisée en quatre intervalles de temps : 00h01-06h00, 06h01-12h00, 12h01-18h00, 18h01-00h00. 
 
@@ -74,6 +75,10 @@ Votre réponse doit inclure le nom de l’aéroport d’origine, la date du reta
     
     b\.
     Commentez comment la probabilité d’être retardé change au cours de la journée.
+    
+    *Hint*: Créez une nouvelle variable qui indique "nuit", "matin", "après-midi" ou "soir" selon l'intervalle de la journée.
+    
+    *Hint*: Pour calculer la proportion de vols retardés dans chaque intervalle, vous pouvez le faire en deux fois: une première en comptant le nombre de vol dans chaque intervalle, pui le nombre de vol retardés dans chaque intervalle. La proportion peut être indiquée dans la narration. Si vous voulez le faire en une fois, créez une variable `retard` qui indique 1 si le vol est retardé et 0 sinon. Vous pourrez ensuite faire la somme de cette variable pour chaque intervalle de temps pour connaitre le nombre de vol retardé, que vous pourrez diviser par le nombre total de vol dans chaque intervalle.
 
 6.  **Question 6 (15 points)** - Trouvez le vol avec le temps de vol le plus long. 
 
@@ -86,13 +91,20 @@ Votre réponse doit inclure le nom de l’aéroport d’origine, la date du reta
     c\. 
     Combien de sièges l’avion qui a effectué ce vol possède-t-il ?
 
-7.  **Question 7 (15 points)** - Le dataframe `airports` contient des informations sur un grand nombre d’aéroports principalement américains. Ces données incluent des informations de localisation pour ces aéroports sous forme de coordonnées de latitude et de longitude. Dans cette question, nous limitons notre analyse aux [frontières contigues des États-Unis](https://en.wikipedia.org/wiki/Contiguous_United_States). Visualisez et décrivez la distribution des longitudes des aéroports dans les frontières contigues des États-Unis. Que cela vous apprend-t-il sur la distribution géographique de ces aéroports ? 
+7.  **Question 7 (15 points)** - Le dataframe `airports` contient des informations sur un grand nombre d’aéroports principalement américains. Ces données incluent des informations de localisation pour ces aéroports sous forme de coordonnées de latitude et de longitude. Dans cette question, nous limitons notre analyse aux [frontières contigues des États-Unis](https://en.wikipedia.org/wiki/Contiguous_United_States). Visualisez et décrivez la distribution des longitudes des aéroports dans les frontières contigues des États-Unis. Que cela vous apprend-t-il sur la distribution géographique de ces aéroports ?
+
+Visualisez sous forme de *scatterplot* la latitude et la longitude des aéroports dans les frontières contigues des États-Unis. Qu'observez-vous ?
+
 Indice : Vous devrez d’abord limiter votre analyse aux frontières contigues des États-Unis. [Cet article](https://en.wikipedia.org/wiki/List_of_extreme_points_of_the_United_States) peut vous aider, mais vous êtes également invités à utiliser d’autres ressources. Assurez-vous de citer toutes les ressources que vous utilisez.
 
 8.  **Question 8 (15 points)** - Recréez le graphique ci-dessous en utilisant les données flights. Une fois que vous avez créé la visualisation, décrivez en un paragraphe ce que vous pensez être le point de cette visualisation. Indice : La visualisation utilise la variable `arrival`, qui n’est pas incluse dans le dataframe `flights`. Vous devrez créer `arrival` vous-même, c’est une variable catégorielle qui est égale à "ontime" lorsque `arr_delay <= 0` et "delayed" lorsque `arr_delay > 0`.
 
 ![](figs/exercice-8.png)
 
-Bonus (5 points) - Créez une visualisation qui montre efficacement s’il existe une relation entre le retard moyen de départ quotidien et la température moyenne quotidienne pour les trois aéroports de New York. Votre réponse doit être donnée en une seule pipe. (Vous ne devriez consacrer du temps à cette question qu’une fois que vous avez terminé de répondre aux autres)
+Bonus (5 points) - Créez une visualisation qui montre efficacement s’il existe une relation entre le retard moyen de départ quotidien et la température moyenne quotidienne pour les trois aéroports de New York. (Vous ne devriez consacrer du temps à cette question qu’une fois que vous avez terminé de répondre aux autres)
+
+*Hint:* Vous pouvez utiliser la fonction `left_join` pour joindre deux dataframe selon une ou plusieurs colonnes communes. Cela vous permettra d'obtenir un tableau avec les données des vols et de la météo.
+
+*Attention:* Cette question vous demandera d'utiliser une fonction que nous n'avons pas encore vue en cours ! La lecture de la documentation est donc importante.
 
 

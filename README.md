@@ -65,7 +65,7 @@ Le package `nycflights13` contient des informations sur tous les vols qui ont qu
     Quelle compagnie aérienne a eu le retard moyen d’arrivée le plus bas ?
     
 4.  **Question 4 (10 points)** - Quelle était la température moyenne à l’aéroport d’origine le jour du retard de départ le plus élevé ? 
-Votre réponse doit inclure le nom de l’aéroport d’origine, la date du retard de départ le plus élevé et la température moyenne **en degrés celsuis** ce jour-là.
+Votre réponse doit inclure le nom de l’aéroport d’origine, la date du retard de départ le plus élevé et la température moyenne **en degrés celsius** ce jour-là.
 *Indice:* Il faudra peut-être le faire en deux fois: commencez par trouver l'aéroport de départ et le jour où le retard au départ est le plus élevé, puis calculez la température moyenne pour ce lieu et ce jour là.
 
 5.  **Question 5 (15 points)** - Considérez la journée divisée en quatre intervalles de temps : 00h01-06h00, 06h01-12h00, 12h01-18h00, 18h01-00h00. 
